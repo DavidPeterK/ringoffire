@@ -1,0 +1,10 @@
+<div class="game-background">
+    <div class="card-stack-container">
+        <img *ngFor="let c of [0, 1, 2, 3]; let i = index;" [ngStyle]="{'right.px': i * 5}" class="card-stack"
+            src="./../../assets/image/cards/card_cover.png" alt="cardStack">
+        <img (click)="takeCard()" class="top-card" style="right: 25px;" src="./../../assets/image/cards/card_cover.png"
+            alt="cardStack">
+        <img (click)="takeCard()" *ngIf="pickCardAnimation" class="own-card pick-card" style="right: 25px;"
+            src="./../../assets/image/cards/{{ currentCard }}.png" alt="cardStack">
+    </div>
+</div>
