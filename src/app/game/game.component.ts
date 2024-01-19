@@ -1,34 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Game } from '../../models/game';
+import { PlayerComponent } from '../player/player.component';
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PlayerComponent],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss',
 })
 
-export class GameComponent implements OnInit {
+export class GameComponent {
   pickCardAnimation = false;
-  currentCard: string | undefined = '';
-  game: Game | undefined;
+  game!: Game;
+  currentCard: (string | undefined);
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.newGame();
-  }
-
-  newGame() {
+  constructor() {
     this.game = new Game();
   }
 
   takeCard() {
-    this.currentCard = this.game?.stack.pop();
+    this.currentCard = this.game.stack.pop();
     this.pickCardAnimation = true;
     setTimeout(() => {
+      if (this.currentCard) {
+        this.game.playedCards.push(this.currentCard);
+      }
       this.pickCardAnimation = false;
-    }, 1500);
+    }, 1000);
   }
 }

@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { GameComponent } from './game/game.component';
-import { Game } from '../models/game';
-
 
 @Component({
   selector: 'app-root',
