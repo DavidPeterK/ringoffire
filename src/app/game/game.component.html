@@ -1,4 +1,5 @@
-<app-player style="top: 130px;" class="player-box"></app-player>
+<app-player *ngFor="let player of game.players; let i = index" [ngStyle]="{'top.px': 100 + (i *120)}" [ name ]="player"
+    class="player-box"></app-player>
 <div class="game-background">
     <div class="card-stack-container">
         <img *ngFor="let c of [0, 1, 2, 3]; let i = index;" [ngStyle]="{'right.px': i * 5}" class="card-stack"
@@ -9,6 +10,8 @@
             alt="cardStack">
         <img (click)="takeCard()" *ngIf="pickCardAnimation" class="own-card pick-card" style="right: 25px;"
             src="./../../assets/image/cards/{{ currentCard }}.png" alt="cardStack">
-
     </div>
 </div>
+<button mat-fab color="primary">
+    <mat-icon>add</mat-icon>
+</button>
