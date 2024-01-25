@@ -5,19 +5,19 @@
 
         <!--card stack-->
         <img *ngFor="let c of [0, 1, 2, 3]; let i = index;" [ngStyle]="{'right.px': i * 5}" class="card-stack"
-            src="./../../assets/image/cards/card_cover.png" alt="cardStack">
+            src="assets/image/cards/card_cover.png" alt="cardStack">
 
         <!--card top of stack-->
-        <img (click)="takeCard()" class="top-card" style="right: 25px;" src="./../../assets/image/cards/card_cover.png"
+        <img (click)="takeCard()" class="top-card" style="right: 25px;" src="assets/image/cards/card_cover.png"
             alt="cardStack">
 
         <!--played card stack-->
-        <img *ngFor="let card of game.playedCards" class="played-card own-card"
-            src="./../../assets/image/cards/{{ card }}.png" alt="cardStack">
+        <img *ngFor="let card of game.playedCards" class="played-card own-card" src="assets/image/cards/{{ card }}.png"
+            alt="cardStack">
 
         <!--new played card-->
         <img (click)="takeCard()" *ngIf="pickCardAnimation" class="own-card pick-card" style="right: 25px;"
-            src="./../../assets/image/cards/{{ currentCard }}.png" alt="cardStack">
+            src="assets/image/cards/{{ currentCard }}.png" alt="cardStack">
 
     </div>
 </div>

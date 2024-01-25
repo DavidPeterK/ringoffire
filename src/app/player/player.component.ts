@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-player',
   standalone: true,
@@ -7,10 +7,12 @@ import { Component, Input } from '@angular/core';
   templateUrl: './player.component.html',
   styleUrl: './player.component.scss'
 })
-export class PlayerComponent {
+export class PlayerComponent implements OnInit {
   @Input() name!: string;
   @Input() playerActiv: boolean = false;
   constructor() {
 
+  }
+  ngOnInit(): void {
   }
 }
