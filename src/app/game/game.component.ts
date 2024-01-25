@@ -28,14 +28,18 @@ export class GameComponent {
   }
 
   takeCard() {
-    this.currentCard = this.game.stack.pop();
-    this.pickCardAnimation = true;
-    setTimeout(() => {
-      if (this.currentCard) {
-        this.game.playedCards.push(this.currentCard);
-      }
-      this.pickCardAnimation = false;
-    }, 1200);
+    if (!this.pickCardAnimation) {
+      this.currentCard = this.game.stack.pop();
+      this.pickCardAnimation = true;
+      this.game.currentPlayer++;
+      this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
+      setTimeout(() => {
+        if (this.currentCard) {
+          this.game.playedCards.push(this.currentCard);
+        }
+        this.pickCardAnimation = false;
+      }, 1200);
+    }
   }
 
   openDialog(): void {
@@ -43,7 +47,9 @@ export class GameComponent {
     });
 
     dialogRef.afterClosed().subscribe((name: string) => {
-      this.game.players.push(name);
+      if (name && name.length > 0) {
+        this.game.players.push(name);
+      }
     });
   }
 }
